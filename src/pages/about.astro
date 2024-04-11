@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+const pageTitle = "About Me";
+
+const identity = {
+firstName: "Álvaro",
+country: "España",
+occupation: "En prácticas",
+hobbies: ["deporte", "Counter-Strike", "Dormir"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = true;
+const goal = 3;
+
+const skillColor = "navy";
+const factsColor = "red";
+const factsFont = "arial";
+const textCase = "uppercase";
+---
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator}>
+    <title>{pageTitle}</title>
+</head>
+
+<body>
+    <h1>{pageTitle}</h1>
+    <p>Esto es una página de prueba para ver cómo funciona Astro</p>
+    <p>Factous:</p>
+    <ul>
+        <li class="facts">Me llamo {identity.firstName}.</li>
+        <li class="facts">Vivo en {identity.country} y estoy {identity.occupation}.</li>
+        {identity.hobbies.length >= 2 &&
+        <li class="facts">2 de mis hobbies: {identity.hobbies[0]} y {identity.hobbies[1]}</li>
+        }
+    </ul>
+    <p>Habilidades:</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    {happy && <p>I am happy to be learning Astro!</p>}
+
+    {finished && <p>I finished this tutorial!</p>}
+
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+</body>
+
+</html>
+
+<style define:vars={{skillColor, factsColor, factsFont, textCase}}>
+    .skill {
+        color: var(--skillColor);
+        font-weight: bold;
+    }
+
+    .facts {
+        color: var(--factsColor);
+        font-family: var(--factsFont);
+        text-transform: var(--textCase);
+    }
+</style>
